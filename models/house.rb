@@ -30,4 +30,19 @@ class House
     return house_hash.map {|house| House.new(house)}
   end
 
+  def delete()
+    sql = "DELETE FROM houses WHERE id = $1;"
+    SqlRunner.run(sql, [@id])
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM houses;"
+    SqlRunner.run(sql)
+  end
+
+  def update()
+    sql = "UPDATE houses SET (name, logo) = ($1, $2) WHERE id = $3;"
+    SqlRunner.run(sql, [@name, @logo, @id])
+  end
+
 end
