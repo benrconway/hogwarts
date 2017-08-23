@@ -1,9 +1,10 @@
 <h1>Here is a list of students at Hogwarts</h1>
 
 <% for student in @students do %>
-
+<% house = student.find_house %>
 <p>Name: <%=student.full_name%></p>
-<p>House: <%=student.house%></p>
+<p>House: <%=house.name%></p>
+<img src="<%=house.logo%>"/>
 <p>Age: <%=student.age%></p>
 
 <hr/>

@@ -3,10 +3,18 @@ require_relative('../models/house')
 require_relative('sql_runner')
 require('pry')
 
-gryffindor = House.new({"name" => "Gryffindor"})
-hufflepuff = House.new({"name" => "Hufflepuff"})
-ravenclaw = House.new({"name" => "Ravenclaw"})
-slytherin = House.new({"name" => "Slytherin"})
+gryffindor = House.new({
+  "name" => "Gryffindor",
+  "logo" => "http://vignette1.wikia.nocookie.net/harrypotter/images/8/8e/0.31_Gryffindor_Crest_Transparent.png/revision/latest?cb=20161124074004"})
+hufflepuff = House.new({
+  "name" => "Hufflepuff",
+  "logo" => "https://vignette2.wikia.nocookie.net/harrypotter/images/5/50/0.51_Hufflepuff_Crest_Transparent.png/revision/latest?cb=20161020182518"})
+ravenclaw = House.new({
+  "name" => "Ravenclaw",
+  "logo" => "http://vignette2.wikia.nocookie.net/harrypotter/images/2/29/0.41_Ravenclaw_Crest_Transparent.png/revision/latest?cb=20161020182442"})
+slytherin = House.new({
+  "name" => "Slytherin",
+  "logo" => "http://vignette4.wikia.nocookie.net/harrypotter/images/d/d3/0.61_Slytherin_Crest_Transparent.png/revision/latest?cb=20161020182557"})
 gryffindor.save
 hufflepuff.save
 ravenclaw.save

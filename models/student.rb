@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner')
+require_relative('house')
 
 class Student
 
@@ -61,6 +62,16 @@ class Student
 
   def full_name
     return "#{@first_name} #{@second_name}"
+  end
+
+  def sorting_hat
+    @house = House.all.sample.id
+  end
+
+  def find_house
+    sql = "SELECT * FROM houses WHERE id = $1"
+    result = House.map_items(SqlRunner.run(sql, [@house]))
+    return result[0]
   end
 
 
