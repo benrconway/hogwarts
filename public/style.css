@@ -1,3 +1,16 @@
 nav, li {
   display: inline;
 }
+
+body {
+  background-image: url('https://images.alphacoders.com/265/265693.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  justify-content: center;
+}
+
+p {
+  text-align: center;
+  font-size: 20px;
+  color: black;
+}

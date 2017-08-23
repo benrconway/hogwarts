@@ -9,7 +9,7 @@ also_reload("./views/*")
 
 #INDEX route
 
-get "/hogwarts" do
+get "/" do
   erb(:welcome)
 end
 
@@ -24,7 +24,6 @@ get "/students/new" do
 end
 
 post "/students" do
-  puts params
   @student= Student.new(params)
   @student.save
   erb(:create)

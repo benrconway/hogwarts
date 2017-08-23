@@ -3,15 +3,15 @@ require_relative('house')
 
 class Student
 
-  attr_accessor(:first_name, :second_name, :house, :age)
+  attr_accessor(:first_name, :second_name, :house_id, :age)
   attr_reader(:id)
 
   def initialize(info)
     @id = info["id"].to_i if info["id"]
     @first_name = info["first_name"]
     @second_name = info["second_name"]
-    @house = info["house"]
-    @age = info["age"]
+    @house_id = info["house_id"].to_i
+    @age = info["age"].to_i
   end
 
   def save
@@ -19,13 +19,13 @@ class Student
       INSERT INTO students (
         first_name,
         second_name,
-        house,
+        house_id,
         age
       ) VALUES (
         $1, $2, $3, $4
       )
         RETURNING id;"
-    values = [@first_name, @second_name, @house, @age]
+    values = [@first_name, @second_name, @house_id, @age]
     student = SqlRunner.run(sql, values)
     @id = student[0]["id"].to_i
   end
@@ -65,12 +65,12 @@ class Student
   end
 
   def sorting_hat
-    @house = House.all.sample.id
+    @house_id = House.all.sample.id
   end
 
   def find_house
     sql = "SELECT * FROM houses WHERE id = $1"
-    result = House.map_items(SqlRunner.run(sql, [@house]))
+    result = House.map_items(SqlRunner.run(sql, [@house_id]))
     return result[0]
   end
 
@@ -86,7 +86,7 @@ class Student
 
    def update()
       sql = "UPDATE students SET (first_name, second_name, house, age) = ($1, $2, $3, $4) WHERE id = $5"
-      values = [@first_name, @second_name, @house, @age, @id]
+      values = [@first_name, @second_name, @house_id, @age, @id]
       SqlRunner.run(sql, values)
     end
 
